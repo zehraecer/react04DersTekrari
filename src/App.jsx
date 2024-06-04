@@ -45,9 +45,6 @@ function App() {
           <option value="true">hackerrank</option>
         </select>
 
-
-
-
         <div style={{ display: "none" }} ref={jsonRef}  >
           <input type="number" value={input} onChange={(e) => setInput(e.target.value)} />
           <button onClick={getItem} >gönder</button>
@@ -55,10 +52,6 @@ function App() {
           <h4>{data.title}</h4>
 
         </div>
-
-
-
-
 
         <div style={{ display: "none" }} ref={footballRef}>
 
