@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const BaseUrl_HackerRankAPI = "https://jsonmock.hackerrank.com/api",
+const BaseUrl_HackerRankAPI = "https://jsonmock.hackerrank.com/api/",
 
     BaseUrl_jsonPlaceHolderAPI = "https://jsonplaceholder.typicode.com/"
 

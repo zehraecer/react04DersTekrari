@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState("")
   const [data2, setData2] = useState([])
   const [opitons, setOptions] = useState()
-  const [footballOptions, SetFootballOptions] = useState("")
+  const [footballOptions, SetFootballOptions] = useState(2011)
   const [input, setInput] = useState(0)
   const footballRef = useRef()
   const jsonRef = useRef()
@@ -17,12 +17,12 @@ function App() {
       jsonRef.current.style.display = "none"
       footballRef.current.style.display = "block"
 
-      HackerRankAPI.get(`football_competitions?year=${2011}`).then((result) => setData2(result))
+      HackerRankAPI.get(`football_competitions?year=${2012}`).then((result) => setData2(result))
       setData("")
     } if (opitons === "false") {
+
       footballRef.current.style.display = "none"
       jsonRef.current.style.display = "block"
-
 
     }
 
@@ -35,7 +35,7 @@ function App() {
 
     }
   }
-
+  console.log(data2);
   return (
 
     <>
@@ -59,16 +59,17 @@ function App() {
             {data2.map((option, index) => {
 
               return (
-                <option key={index} className='option' value={option.name}>{`${option.name}`}</option>
+                <option key={index} className='option' value={option.year}>{`${option.year}`}</option>
               )
             })}
           </select>
 
 
-          {data2.filter((data) => data.name === footballOptions).map((x, index) => {
+          {data2.map((data, index) => {
             return (
-              <h4 key={index}>{x.name} - {x.runnerup} - {x.winner}</h4>
+              <h4 key={index}>{data.name} - {data.runnerup} - {data.winner}</h4>
             )
+
           })}
 
         </div>
