@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +42,78 @@
 
 .read-the-docs {
   color: #888;
+}
+
+
+.selectApi {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  select {
+    padding: 10px 50px;
+    border-radius: 5px;
+    border: 1px solid rgb(234, 179, 188);
+  }
+
+  label {
+    color: darkblue;
+  }
+
+}
+
+.football {
+  margin-top: 25px;
+
+  select {
+    padding: 5px 25px;
+    border-radius: 5px;
+  }
+}
+
+.json {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+
+}
+
+.jsonInput {
+  display: flex;
+  gap: 15px;
+
+  input {
+    border-radius: 7px;
+
+  }
+
+  button {
+    background-color: rgb(192, 226, 226);
+    color: rgb(25, 30, 34);
+  }
+
+
+}
+
+.footballTable {
+  margin-top: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 12px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

@@ -22,7 +22,7 @@ function App() {
     } if (opitons === "false") {
 
       footballRef.current.style.display = "none"
-      jsonRef.current.style.display = "block"
+      jsonRef.current.style.display = "flex"
 
     }
 
@@ -51,20 +51,35 @@ function App() {
 
     <>
       <div>
-        <select value={opitons} onChange={(e) => setOptions(e.target.value)}>
-          <option value="false" >jsonplaceholder</option>
-          <option value="true">hackerrank</option>
-        </select>
 
-        <div style={{ display: "none" }} ref={jsonRef}  >
-          <input type="number" value={input} onChange={(e) => setInput(e.target.value)} />
-          <button onClick={getItem} >gönder</button>
+        <div className='selectApi'>
 
-          <h4>{data.title}</h4>
+          <label style={{ color: "darkblue" }}>Select Api</label>
+          <select value={opitons} onChange={(e) => setOptions(e.target.value)}>
+            <option value="false" >jsonplaceholder</option>
+            <option value="true">hackerrank</option>
+          </select>
 
         </div>
 
-        <div style={{ display: "none" }} ref={footballRef}>
+        <div className='json' style={{ display: "none" }} ref={jsonRef}  >
+
+          <div className='jsonInput'>
+
+            <input type="number" value={input} onChange={(e) => setInput(e.target.value)} />
+            <button onClick={getItem} >gönder</button>
+          </div>
+
+          <div>
+
+            <h5>{data.title}</h5>
+            <h5>{data.body}</h5>
+
+          </div>
+
+        </div>
+
+        <div className='football' style={{ display: "none" }} ref={footballRef}>
 
           <select id="cars" onChange={(e) => setSelectYear(e.target.value)} >
             {years.map((option, index) => {
@@ -76,17 +91,35 @@ function App() {
           </select>
 
 
-          {data2.filter((data) => data.year == selectYear).map((x, index) => {
-            return (
-              <h4 key={index}>{x.name} - {x.runnerup} - {x.winner}</h4>
-            )
-          })}
+
+          <div className='footballTable'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Country</th>
+                  <th>Name</th>
+                  <th>RunnerUp</th>
+                  <th>Winner</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data2.filter((data) => data.year == selectYear).map((x, index) => (
+                  <tr key={index}>
+                    <td>{x.country}</td>
+                    <td>{x.name}</td>
+                    <td>{x.runnerup}</td>
+                    <td>{x.winner}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+
 
         </div>
-
-
-
       </div>
+
     </>
   )
 }
