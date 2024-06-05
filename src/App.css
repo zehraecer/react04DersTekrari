@@ -44,6 +44,15 @@
   color: #888;
 }
 
+li {
+  list-style-type: none;
+  text-align: left;
+}
+
+ul {
+  padding-inline: 200px;
+  margin-top: 20px;
+}
 
 .selectApi {
   display: flex;
@@ -73,10 +82,11 @@
 }
 
 .json {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: none;
   margin-top: 25px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 
@@ -116,4 +126,10 @@ th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+span {
+  color: "darkblue";
+  font-size: "bold";
+  text-decoration: "underline "
 }

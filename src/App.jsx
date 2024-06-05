@@ -62,25 +62,24 @@ function App() {
 
         </div>
 
-        <div className='json' style={{ display: "none" }} ref={jsonRef}  >
+        <div className='json' ref={jsonRef}  >
 
           <div className='jsonInput'>
-
             <input type="number" value={input} onChange={(e) => setInput(e.target.value)} />
             <button onClick={getItem} >gönder</button>
           </div>
 
-          <div>
+          <ul>
 
-            <h5>{data.title}</h5>
-            <h5>{data.body}</h5>
+            <li>{data.title}</li>
+            <li>{data.body}</li>
 
-          </div>
+          </ul>
 
         </div>
 
         <div className='football' style={{ display: "none" }} ref={footballRef}>
-
+          <label style={{ color: "darkblue", marginRight: "20px" }}>Select Year</label>
           <select id="cars" onChange={(e) => setSelectYear(e.target.value)} >
             {years.map((option, index) => {
               { option }
