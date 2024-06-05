@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState("")
   const [data2, setData2] = useState([])
   const [opitons, setOptions] = useState()
-  const [footballOptions, SetFootballOptions] = useState(2011)
+  const [selectYear, setSelectYear] = useState(2011)
   const [input, setInput] = useState(0)
   const footballRef = useRef()
   const jsonRef = useRef()
@@ -17,7 +17,7 @@ function App() {
       jsonRef.current.style.display = "none"
       footballRef.current.style.display = "block"
 
-      HackerRankAPI.get(`football_competitions?year=${2012}`).then((result) => setData2(result))
+      HackerRankAPI.get(`football_competitions?year=${selectYear}`).then((result) => setData2(result))
       setData("")
     } if (opitons === "false") {
 
@@ -26,7 +26,7 @@ function App() {
 
     }
 
-  }, [opitons])
+  }, [opitons, selectYear])
 
   const getItem = () => {
     if (opitons === "false") {
@@ -35,6 +35,17 @@ function App() {
 
     }
   }
+
+
+  const years = [
+    { year: 2011 },
+    { year: 2012 },
+    { year: 2013 },
+    { year: 2014 },
+    { year: 2015 },
+  ]
+
+
   console.log(data2);
   return (
 
@@ -55,21 +66,20 @@ function App() {
 
         <div style={{ display: "none" }} ref={footballRef}>
 
-          <select id="cars" onChange={(e) => SetFootballOptions(e.target.value)} >
-            {data2.map((option, index) => {
-
+          <select id="cars" onChange={(e) => setSelectYear(e.target.value)} >
+            {years.map((option, index) => {
+              { option }
               return (
-                <option key={index} className='option' value={option.year}>{`${option.year}`}</option>
+                <option key={index} value={option.year}>{`${option.year}`}</option>
               )
             })}
           </select>
 
 
-          {data2.map((data, index) => {
+          {data2.filter((data) => data.year == selectYear).map((x, index) => {
             return (
-              <h4 key={index}>{data.name} - {data.runnerup} - {data.winner}</h4>
+              <h4 key={index}>{x.name} - {x.runnerup} - {x.winner}</h4>
             )
-
           })}
 
         </div>
