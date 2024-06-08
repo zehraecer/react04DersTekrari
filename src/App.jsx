@@ -6,30 +6,30 @@ function App() {
 
   const [data, setData] = useState("")
   const [data2, setData2] = useState([])
-  const [opitons, setOptions] = useState()
+  const [options, setOptions] = useState()
   const [selectYear, setSelectYear] = useState(2011)
   const [input, setInput] = useState(0)
   const footballRef = useRef()
   const jsonRef = useRef()
 
   useEffect(() => {
-    if (opitons === "true") {
+    if (options === "true") {
       jsonRef.current.style.display = "none"
       footballRef.current.style.display = "block"
 
       HackerRankAPI.get(`football_competitions?year=${selectYear}`).then((result) => setData2(result))
       setData("")
-    } if (opitons === "false") {
+    } if (options === "false") {
 
       footballRef.current.style.display = "none"
       jsonRef.current.style.display = "flex"
 
     }
 
-  }, [opitons, selectYear])
+  }, [options, selectYear])
 
   const getItem = () => {
-    if (opitons === "false") {
+    if (options === "false") {
       JsonPlaceHolder.get(`posts/${input}`).then((result) => setData(result))
       setData2([])
 
@@ -55,7 +55,7 @@ function App() {
         <div className='selectApi'>
 
           <label style={{ color: "darkblue" }}>Select Api</label>
-          <select value={opitons} onChange={(e) => setOptions(e.target.value)}>
+          <select value={options} onChange={(e) => setOptions(e.target.value)}>
             <option value="false" >jsonplaceholder</option>
             <option value="true">hackerrank</option>
           </select>
